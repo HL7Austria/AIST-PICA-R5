@@ -1,0 +1,15 @@
+{
+  "package-id": "HL7ATPICA-R4",
+  "title": "PICA Implementation Guide",
+  "canonical": "http://hl7.at/fhir/HL7ATPICA/4.0.1",
+  "introduction": "IG about the PICA FHIR® Profiles.",
+  "list": [
+    {
+      "version": "current",
+      "desc": "Draft",
+      "path": "http://hl7.at/fhir/HL7ATPICA/4.0.1",
+      "status": "ci-build",
+      "current": true
+    }
+  ]
+}

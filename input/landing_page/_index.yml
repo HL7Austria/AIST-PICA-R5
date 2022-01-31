@@ -1,0 +1,6 @@
+- name: HL7&reg;-AT-FHIR&reg;-PICA-R4
+- version: 0.1.0-STU1
+- description: FHIR&reg; R4 Implementation Guide for the Process Intelligence and Conformance Auditing (PICA) project.
+- last_published: %%date%%
+- branch: %%branch%%
+- type: draft
