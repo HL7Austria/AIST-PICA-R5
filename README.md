@@ -1,4 +1,4 @@
-# HL7-AT-PICA
+# AIST-PICA
 
 This repository serves to host the Implementation Guide for the [Process Intelligence and Conformance Auditing](https://aist.fh-hagenberg.at/index.php/en/projects/pica) (PICA) project. The project deals with the development and establishment of process mining in the HL7® FHIR® domain. The target is to create a digital twin of organizational processes in medical informatics.
 
