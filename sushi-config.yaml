@@ -10,21 +10,21 @@
 # │  supported properties, see:                                                                    │
 # │  http://build.fhir.org/ig/HL7/fhir-shorthand/branches/beta/sushi.html#ig-development           │
 # ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
-id: HL7ATPICA
-canonical: http://hl7.at/fhir/HL7ATPICA/4.0.1
+id: AISTPICA
+canonical: http://hl7.at/fhir/AISTPICA/whateverVersion
 version: 0.1.0
-name: HL7AustriaPICAImplementationGuide
-title: HL7® Austria FHIR® PICA Implementation Guide
+name: AISTPICAImplementationGuide
+title: AIST PICA Implementation Guide
 status: active
-publisher: HL7® Austria, TC FHIR®, University of Applied Sciences Upper Austria
+publisher: University of Applied Sciences Upper Austria, HL7® Austria, TC FHIR®
 contact:
-  - name: University of Applied Sciences Upper Austria
+  - name: Advanced Information Systems and Technology (AIST)
     telecom:
       - system: email
         value: mailto:emmanuel.helm@fh-hagenberg.at
 description: An Implementation Guide for the PICA Profiles.
 license: CC0-1.0
-fhirVersion: 4.0.1
+fhirVersion: 5.0.0-snapshot1
 parameters:
   show-inherited-invariants: false
 copyrightYear: 2022+

@@ -4,7 +4,7 @@ This is the implementation guide for the **Process Intelligence and Conformance 
 
 ### HL7® Austria & TC FHIR®
 
-This Implementation guide is hosted by HL7® Austria and the TC FHIR®. The primary implementer is the University of Applied Sciences upper Austria.
+This Implementation guide is hosted by HL7® Austria and the TC FHIR®. The primary implementer is the Research Group Advanced Information Systems and Technology (AIST) at the University of Applied Sciences upper Austria.
 
 HL7® Austria is an official Affiliate of HL7® International. Within HL7® Austria the technical committee for FHIR® (TC FHIR®) is responsible to promote and disseminate the new upcoming standard HL7® FHIR®.
 The TC FHIR® deals with the standard-compliant and coordinated usage of HL7® FHIR® based communication solutions. 
