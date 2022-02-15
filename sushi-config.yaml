@@ -11,7 +11,7 @@
 # │  http://build.fhir.org/ig/HL7/fhir-shorthand/branches/beta/sushi.html#ig-development           │
 # ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
 id: AISTPICA
-canonical: http://hl7.at/fhir/AISTPICA/whateverVersion
+canonical: http://hl7.at/fhir/AISTPICA/R5
 version: 0.1.0
 name: AISTPICAImplementationGuide
 title: AIST PICA Implementation Guide
