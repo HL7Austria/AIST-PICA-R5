@@ -21,10 +21,10 @@ contact:
   - name: Advanced Information Systems and Technology (AIST)
     telecom:
       - system: email
-        value: mailto:emmanuel.helm@fh-hagenberg.at
+        value: mailto:oliver.krauss@fh-hagenberg.at
 description: An Implementation Guide for the PICA Profiles.
 license: CC0-1.0
-fhirVersion: 5.0.0-snapshot1
+fhirVersion: 5.0.0
 parameters:
   show-inherited-invariants: false
 copyrightYear: 2022+
