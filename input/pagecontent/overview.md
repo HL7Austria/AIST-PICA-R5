@@ -44,7 +44,7 @@ The following considerations explain why the selected fields are required for th
 
 #### Which perspectives should be used to reconstruct and conformance check patient processes.
 
-Simply: all of them, to get the best results. As minimal requirement to at least reconstruct a human readable process the **core** and **conformance** perspectives are needed, as they identify what (conformance) happened when (core) to which patient (core). The **care-pathway** resource allows you to check which events were recorded for a specific treatment plan, which is what is needed for conformance checking. The **patient-visit** allows to view (one or more) treatments in the scope of one or more visits to a care provider, or alternatively allows to view how patients progress through their stay. Finally **actor** can give an overview about who did what with the patient.
+Simply: all of them, to get the best results. As minimal requirement to at least reconstruct a human readable process the **core** and **conformance** perspectives are needed, as they identify what (conformance) happened when (core) to which patient (core). The **care-pathway** resource allows you to check which events were recorded for a specific treatment plan, which is what is needed for conformance checking. The **patient-visit** allows viewing (one or more) treatments in the scope of one or more visits to a care provider, or alternatively allows to view how patients progress through their stay. Finally, **actor** can give an overview about who did what with the patient.
 
 #### Core perspective
 
@@ -56,7 +56,7 @@ The PICA Core Profile is the minimum necessary perspective to reconstruct proces
 
 The core perspective alone, allows one to view all changes (create, update, delete) concerning information related to a patient. Without any other perspectives, this does not concern a specific disease, hospital stay, etc, but the entire patient history. 
 
-It is also not clear what happened to the patient with the core perspective alone, because this is covered in the *conformance* perspective. In case you wish to simply reconstruct patient pahtways without covering the other perspectives you may wish to use ae.entity.what to show which resources were accessed, as this is the lowest common denominator. 
+It is also not clear what happened to the patient with the core perspective alone, because this is covered in the *conformance* perspective. In case you wish to simply reconstruct patient pathways without covering the other perspectives, you may wish to use ae.entity.what to show which resources were accessed, as this is the lowest common denominator. 
 
 ##### Considerations
 
@@ -65,21 +65,21 @@ General:
 - We do not use other FHIR Resources other than AuditEvents to keep the effort for implementers as small as possible.
 
 Considerations for Event Time:
-- ae.meta.lastUpdated could also be used, as this value is always set. However this only captures when the server last conduced the write operation on the AuditEvent, and thus is *not used* as event time.
+- ae.meta.lastUpdated could also be used, as this value is always set. However, this only captures when the server last conduced the write operation on the AuditEvent, and thus is *not used* as event time.
 - EventTime could also be considered via ae.recorded. This field only captures when the AuditEvent was recorded, but not when the underlying process occured, and thus is *not used* as event time.
 - EventTime could be tracked via the referenced based-on resources, for example Task.executionPeriod, however one Task can have multiple AuditEvents occuring, and a Task will also not always be available, as this would require FHIR based workflow management within the organization.
 
 
 #### Conformance perspective
 
-Core perspective to enable conformance checking. Requires the tasks the were conducted to be documented in a machine readable format:
+Core perspective to enable conformance checking. Requires the tasks that were conducted to be documented in a machine readable format:
 - **Task** in the form of a machine readable code.
 
 ##### What does the conformance perspective do?
 
 This perspective is the minimal requirement to enable conformance checking of processes. As every task that is done for a patient is documented with a machine readable code, reconstructed processes contain what has happened when for which patient. During conformance checking the processes can be filtered only to tasks relevant for the checked process.
 
-Note that it is possible that one task is part of multiple processes. For example a blood test (snomed code 396550006), could be part of a general health screening, or for checking the iron content before a blood donation. Thus it is recommended to also consider the *care-pathway* perspective.
+Note that it is possible that one task is part of multiple processes. For example, a blood test (snomed code 396550006), could be part of a general health screening, or for checking the iron content before a blood donation. Thus, it is recommended to also consider the *care-pathway* perspective.
 
 ##### Considerations
 
@@ -87,6 +87,7 @@ Note that it is possible that one task is part of multiple processes. For exampl
 - In R4 ae.entity.type (and other codings) have different meanings and are not supposed to relate to the task that was conducted.
 - In R4 ae.type, and subtype have a different meaning as well
 - In R4 ae.entity.detail.type and ae.entity.detail.value could be used to document the task, but this was not recommended by the FHIR community, thus an extension was created.
+
 #### Patient-Visit perspective
 
 The patient visit perspective, enables documenting interactions between patients and healthcare providers:
@@ -101,7 +102,7 @@ This perspective enables two scenarios:
 ##### Considerations
 
 - ae.encounter was added in FHIR R5 upon request as a result of this project. There is no corresponding R4 field, thus an extension was created. 
-- In R4, then encounter resource captures encounter.statusHistory.period, which (if encounter.statusHistory.status is between arrived an finished) allows the capturing of which AuditEvents belong to the encounter, and might allow filling audit events with the extension in R4.
+- In R4, then encounter resource captures encounter.statusHistory.period, which (if encounter.statusHistory.status is between arrived and finished) allows the capturing of which AuditEvents belong to the encounter, and might allow filling audit events with the extension in R4.
 
 #### Care-Pathway perspective
 
@@ -112,7 +113,7 @@ Care pathway documents which care plan was followed for the patient:
 
 The care pathway follows a specific treatment plan for a patient. As these CarePlans in FHIR represent the treatment plan, based on a guideline, this allows conformance checking of a process.
 
-In FHIR there are several types of CarePlan. If the care plan you want to conformance check is made for a group (CarePlan.subject), you are able to process mine and conformance check for a group of patients. Otherwise the care plan will be specific to one patient, and allows only to check the conformance of that one patients process. In case you want to check the conformance for a specific process (e.g. Treatment for Burn Victims in specific Hospital), all of the care plans that were made for a patient need to be selected from the Audit Log. This depends massively on how FHIR is treated in the hospital, and could be one of the following options (among others):
+In FHIR there are several types of CarePlan. If the care plan you want to conformance check is made for a group (CarePlan.subject), you are able to process mine and conformance check for a group of patients. Otherwise, the care plan will be specific to one patient, and allows only to check the conformance of that one patient's process. In case you want to check the conformance for a specific process (e.g. Treatment for Burn Victims in specific Hospital), all of the care plans that were made for a patient need to be selected from the Audit Log. This depends massively on how FHIR is treated in the hospital, and could be one of the following options (among others):
 - CarePlan.instantiatesCanonical refers to the treatment guideline in the form of a PlanDefinition, all care plans for one plan definition can be grouped together in this case
 - CarePlan.basedOn refers to a generic CarePlan (similar to PlanDefinition)
 - CarePlan.category identifies a code for a treatment that should be conformance checked
@@ -120,7 +121,7 @@ In FHIR there are several types of CarePlan. If the care plan you want to confor
 
 ##### Considerations
 
-- ae.basedOn was added in FHIR R5 upon request as a result of this project. It covers more than just CarePlan because of addditional requirements in FHIR.
+- ae.basedOn was added in FHIR R5 upon request as a result of this project. It covers more than just CarePlan because of additional requirements in FHIR.
 - CarePlan was chosen instead of PlanDefinition, even though PlanDefinition in FHIR is intended to define processes (not only treatment) in FHIR on a descriptive level. This was done for several reasons:
   - CarePlan is more used than PlanDefinition. CarePlan also can be used in the form of "this is our treatment plan for condition X", and PlanDefinition is only used if the care provider has a rigorous workflow management.
   - It is more likely that an AuditEvent references the CarePlan that was actually followed for a patient, than the PlanDefinition the CarePlan is basedOn.
@@ -134,7 +135,7 @@ The actor perspective enables viewing processes in the form of who (person, role
 
 ##### What does the actor perspective do?
 
-The actor perspective allows viewing the process from the viewpoint of a specific person, deparment, or organization. Alternatively it allows viewing who was involved in the process at which specific step(s). For example this can help identify bottlenecks with machines, or movement of patients between departments.
+The actor perspective allows viewing the process from the viewpoint of a specific person, deparment, or organization. Alternatively, it allows viewing who was involved in the process at which specific step(s). For example, this can help identify bottlenecks with machines, or movement of patients between departments.
 
 Note that the patient can be an actor as well, for example if they filled a questionnaire, or took their own vital signs.
 
