@@ -4,3 +4,4 @@ This repository serves to host the Implementation Guide for the [Process Intelli
 
 The rendered version of the current version of the PICA Implementation Guide will be published on this github project page: https://hl7austria.github.io/index.html
 The publishing is done fully automatically after every successful merge to master.
+ 
