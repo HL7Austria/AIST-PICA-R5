@@ -1,4 +1,4 @@
-- name: AIST-PICA-R4
+- name: AIST-PICA-R5
 - version: 0.1.0-STU1
 - description: FHIR&reg; R5 Implementation Guide for the Process Intelligence and Conformance Auditing (PICA) project.
 - last_published: %%date%%
