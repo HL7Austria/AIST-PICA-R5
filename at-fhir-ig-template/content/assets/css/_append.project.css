@@ -1,0 +1,242 @@
+/*
+  at-fhir-ig-template enhancements
+*/
+
+:root {
+
+  --ig-status-text-color: rgb(41, 41, 41); /* 1. IG Title and status text color */
+  --navbar-bg-color: #FFF; /* 2. Header container color */
+  --footer-bg-color: #333; /* 3. Footer background color*/
+  --footer-container-bg-color: #333; /* 4. Footer container color */
+  --stripe-bg-color: #FFFFFF; /* 5. Header strip color */
+
+  --btn-hover-color: #FFF;  /* 6. Menu button hover color */
+  --btn-active-color: #FFF; /* 7. Menu button active color */
+  --btn-text-color: #333; /* 8. Menu button text color */
+
+  /* NOT CHANGED 9. Menu item gradient start color*/
+  /* NOT CHANGED 10. Menu item gradient end  color */
+  /* NOT CHANGED 11. Menu item gradient start color (with alpha) */
+  /* NOT CHANGED 12. Menu item gradient end color (with alpha) */
+  /* NOT CHANGED 13. Hyperlink text color */
+  /* NOT CHANGED 14. Hyperlink text hover color */
+
+  --publish-box-bg-color: #FFF0; /* 15. Publish box background color */
+  --publish-box-border: 0px; /* 16.  Publish box border definition */
+
+  --toc-box-bg-color: #f5f5f5; /* 17.  TOC box background color */
+  --toc-box-border: 1px solid #DDD; /* 18. TOC box border definition */
+
+  --stu-note-background-color: #f7d2d2; /* 19. (STU) Note box background color */
+  --stu-note-border-left-color: #a81010; /* 20. (STU) Note box border color */
+
+  --ig-header-color: #FFF; /* 21. Header color (sides) */
+  --ig-header-container-color: #FFF; /* 22. Header container color (center) */
+
+  /* NOT CHANGED 23. Footer navigation background color*/
+
+  /* NOT CHANGED 24. Footer highlight font color */
+  /* NOT CHANGED 25. Footer hyperlinks font color */
+  /* NOT CHANGED 26. Footer highlight font color */
+
+  /* NOT CHANGED 27. Breadcrumb font color */
+  /* NOT CHANGED 28. Breadcrumb font color */
+
+  /* NOT CHANGED 29. Dragon background color */
+  /* NOT CHANGED 30. Dragon font color */
+
+}
+
+#segment-navbar {
+  border-bottom: 1px solid #e5e5e5;
+  margin-bottom: 6px;
+}
+
+#segment-header > .container #header-logo {
+  max-width: 80px;
+  padding-top: 10px;
+  padding-left: 6px;
+}
+
+#segment-content {
+  margin-bottom: 50px;
+}
+
+#segment-footer {
+  position: fixed;
+  bottom: 0px;
+  width: -webkit-fill-available;
+}
+
+.navbar-inverse {
+  border-bottom: 2px solid #FFF;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover {
+  border-bottom: 2px solid #da0c23;
+}
+
+#ig-status {
+  text-align: unset;
+  margin-left: 6px;
+}
+
+#stripe {
+  height: 1px;
+}
+
+#publish-box {
+  padding: 0px;
+  margin: 0px;
+}
+
+.navbar .nav > li > a {
+  font-weight: bold;
+  font-size: 10pt;
+}
+
+.navbar .nav > li > a {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-bottom: 2px solid #FFF;
+}
+
+.navbar .nav > .active > a,
+.navbar .nav > .active > a:hover,
+.navbar .nav > .active > a:focus {
+  border-bottom: 2px solid #da0c23;
+}
+
+.dropdown-menu {
+  margin-top: -2px;
+  border-top: 2px solid #da0c23;
+}
+
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus,
+.dropdown-submenu:hover > a,
+.dropdown-submenu:focus > a {
+  color: #333;
+  background-image: unset;
+  background-repeat: unset;
+  filter: unset;
+}
+
+.dropdown-menu > .active > a,
+.dropdown-menu > .active > a:hover,
+.dropdown-menu > .active > a:focus {
+  color: #333;
+  background-image: unset;
+  background-repeat: unset;
+  filter: unset;
+}
+
+.nav-tabs {
+  margin-top: 20px;
+}
+
+.nav-tabs li a:hover,
+.nav-tabs li a:focus {
+  border-bottom-color: #da0c23;
+}
+
+.nav-tabs {
+  border-bottom-color: #da0c23;
+}
+
+.nav-tabs > .active > a,
+.nav-tabs > .active > a:hover,
+.nav-tabs > .active > a:focus {
+  color: #da0c23;
+  border-color: #da0c23 #da0c23 transparent;
+}
+
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li.active > a:focus {
+  color: #da0c23;
+  border: 1px solid #da0c23;
+  border-bottom-color: transparent;
+}
+
+.navbar-inverse .navbar-nav > .open > a,
+.navbar-inverse .navbar-nav > .open > a:hover,
+.navbar-inverse .navbar-nav > .open > a:focus {
+  color: #333;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+  padding: 14px;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover,
+.navbar-inverse .navbar-nav > li > a:focus {
+  color: #333;
+}
+
+ul.markdown-toc
+{
+  padding: 6px;
+  width: 250px;
+  border-radius: 4px;
+  padding-top: 14px;
+  margin-left: 6px;
+}
+
+div.markdown-toc
+{
+  padding: 6px;
+  width: 250px;
+  border-radius: 4px;
+  padding-top: 14px;
+  margin-left: 6px;
+}
+
+table .grid {
+  border: 0px !important;
+  width: 100% !important;
+}
+
+table .grid th, td {
+  padding: 6px !important;
+  padding-bottom: 0px !important;
+  text-align: left !important;
+  border: 0px !important;
+  border-bottom: 1px solid #ddd !important;
+}
+
+table .grid tr:hover {
+  background-color: #f5f5f5 !important;
+}
+
+table .grid tr:nth-child(even) {
+  background-color: #f2f2f2 !important;
+}
+
+.ui-tabs .ui-tabs-nav {
+  background-color: #fff;
+  border: 0px;
+  border-bottom: 1px solid #c5c5c5;
+  border-radius: 0px !important;
+}
+
+.ui-tabs .ui-tabs-nav li {
+  border: 1px solid #c5c5c5;
+  background-color: #f5f5f5;
+  color: #757575;
+}
+
+.ui-tabs .ui-tabs-nav .ui-tabs-anchor {
+  background-color: #f5f5f5;
+  color: #757575;
+}
+
+.ui-tabs .ui-tabs-nav .ui-state-hover a, .ui-state-hover a:hover, .ui-state-hover a:link, .ui-state-hover a:visited, .ui-state-focus a, .ui-state-focus a:hover, .ui-state-focus a:link, .ui-state-focus a:visited {
+  background-color: #FFF;
+  color: #da0c23;
+}
+
+.ui-tabs .ui-tabs-nav li.ui-tabs-active .ui-tabs-anchor, .ui-tabs .ui-tabs-nav li.ui-state-disabled .ui-tabs-anchor, .ui-tabs .ui-tabs-nav li.ui-tabs-loading .ui-tabs-anchor {
+  background-color: #FFF;
+  color: #da0c23;
+}

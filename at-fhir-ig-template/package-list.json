@@ -1,0 +1,23 @@
+{
+  "package-id": "hl7.at.fhir.template",
+  "title": "Austrian FHIR® IG Base Template",
+  "introduction": "For use by anyone in the Austrian domain",
+  "canonical": "http://fhir.org/templates/hl7.at.fhir.template",
+  "list": [
+    {
+      "version": "current",
+      "desc": "Continuous Integration Build (latest in version control)",
+      "path": "http://build.fhir.org/ig/HL7Austria/at-fhir-ig-template/",
+      "status": "ci-build",
+      "current": true
+    },
+    {
+      "version": "0.0.1",
+      "desc": "First release",
+      "path": "http://fhir.org/templates/hl7.at.fhir.template/0.0.1",
+      "status": "release",
+      "sequence": "Publications",
+      "date": "2022-08-31"
+    }
+  ]
+}
