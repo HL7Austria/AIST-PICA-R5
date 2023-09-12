@@ -10,11 +10,19 @@ Id:             aist-pica-auditevent-core
 Title:          "AIST PICA Core AuditEvent Profile"
 Description:    "AIST PICA Core AuditEvent Profile enforcing the patient and event time"
 
-// Define Mandatory Fields (ae.patient and occured)
-* patient 1..1 
-* patient ^short = "The patient this Audit event is for."
-* occurredDateTime 1..1
-* occurredDateTime ^short = "Documents when the event was conducted, not when it was audited."
+// Define Mandatory Fields (ae.entity.what and occured)
+* entity 1..*
+* entity ^short = "At least one entity must refer to the patient."
+* entity ^slicing.rules = #open
+* entity ^slicing.ordered = false
+* entity ^slicing.description = "At least one entity must refer to the patient"
+* entity contains patient 1..1
+* entity[patient].what only Reference(Patient)
+* entity[patient].what 1..1
+* entity[patient].what ^short = "The patient this Audit event is for."
+* period 1..1
+* period ^short = "Documents when the event was conducted, not when it was audited."
+
 
 Profile:        AISTPICAAuditEventConformance
 Parent:         AISTPICAAuditEventCore
@@ -22,9 +30,10 @@ Id:             aist-pica-auditevent-conformance
 Title:          "AIST PICA Conformance AuditEvent Profile"
 Description:    "AIST PICA Conformance AuditEvent Profile enforcing the code value"
 
-// Define Mandatory Fields (ae.code)
-* code 1..1
-* code ^short = "Code identifying task in process. It is recommended to extend this profile and require a value-set."
+// Define Mandatory Fields (ae.code) as extension
+* extension contains AISTPICAExtAuditeventCode named code 1..1
+* extension[code] ^short = "Code identifying task in process. It is recommended to extend this profile and require a value-set."
+
 
 Profile:        AISTPICAAuditEventPatientVisit
 Parent:         AISTPICAAuditEventCore
@@ -32,10 +41,9 @@ Id:             aist-pica-auditevent-patientvisit
 Title:          "AIST PICA Patient Visit AuditEvent Profile"
 Description:    "AIST PICA Patient Visit AuditEvent Profile enforcing the encounter"
 
-// Define Mandatory Fields (ae.encounter)
-* encounter 1..1
-* encounter ^short = "Encounter between the patient and a care provider."
-
+// Define Mandatory Fields (ae.encounter) as extension
+* extension contains AISTPICAExtAuditeventEncounter named encounter 1..1
+* extension[encounter] ^short = "Encounter of a patient with a care provider."
 
 Profile:        AISTPICAAuditEventCarePathway
 Parent:         AISTPICAAuditEventCore
@@ -44,13 +52,8 @@ Title:          "AIST PICA Care Pathway AuditEvent Profile"
 Description:    "AIST PICA Care Pathway AuditEvent Profile enforcing the care plan"
 
 // Define Mandatory Fields (ae.basedOn contains at least one CarePlan)
-* basedOn 1..*
-* basedOn ^short = "Reference to care plan identifying the process to be conformance checked."
-* basedOn ^slicing.rules = #open
-* basedOn ^slicing.ordered = false
-* basedOn ^slicing.description = "At least one care plan must be referenced"
-* basedOn contains carePlan 1..*
-* basedOn[carePlan] only Reference(CarePlan)
+* extension contains AISTPICAExtAuditeventBasedOn named basedOn 1..1
+* extension[basedOn] ^short = "Process that was followed in the treatment of this patient."
 
 
 Profile:        AISTPICAAuditEventActor
@@ -59,6 +62,7 @@ Id:             aist-pica-auditevent-actor
 Title:          "AIST PICA Actor AuditEvent Profile"
 Description:    "AIST PICA Actor AuditEvent Profile enforcing the participating actor(s)"
 
-// Define Mandatory Fields (ae.agent is already required)
+// Define Mandatory Fields (ae.agent)
 * agent 1..*
+* agent.who 1..1
 * agent.who ^short = "Actor that participated in the task."

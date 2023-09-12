@@ -11,7 +11,7 @@
 # │  http://build.fhir.org/ig/HL7/fhir-shorthand/branches/beta/sushi.html#ig-development           │
 # ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
 id: AISTPICA
-canonical: http://hl7.at/fhir/AISTPICA/R5
+canonical: http://hl7.at/fhir/AISTPICA/R4
 version: 0.1.0
 name: AISTPICAImplementationGuide
 title: AIST PICA Implementation Guide
@@ -24,7 +24,7 @@ contact:
         value: mailto:oliver.krauss@fh-hagenberg.at
 description: An Implementation Guide for the PICA Profiles.
 license: CC0-1.0
-fhirVersion: 5.0.0
+fhirVersion: 4.3.0
 parameters:
   show-inherited-invariants: false
 copyrightYear: 2022+

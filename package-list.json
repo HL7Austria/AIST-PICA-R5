@@ -1,13 +1,13 @@
 {
-  "package-id": "AISTPICA-R5",
+  "package-id": "AISTPICA-R4",
   "title": "PICA Implementation Guide",
-  "canonical": "http://hl7.at/fhir/AISTPICA/R5",
+  "canonical": "http://hl7.at/fhir/AISTPICA/R4",
   "introduction": "IG for the PICA FHIR® Profiles.",
   "list": [
     {
       "version": "current",
       "desc": "Draft",
-      "path": "http://hl7.at/fhir/AISTPICA/R5",
+      "path": "http://hl7.at/fhir/AISTPICA/R4",
       "status": "ci-build",
       "current": true
     }
