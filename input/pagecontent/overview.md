@@ -33,12 +33,16 @@ ae references the AuditEvent resource in [FHIR R4B](https://hl7.org/fhir/R4B/aud
 | patient-visit (encounter)  | An Encounter resource is referenced by the AuditEvent. It refers to a patient visit grouping multiple AuditEvents (e.g. one interaction between patient and healthcare provider)                                 | We can analyze the patient pathway during an encounter (e.g. hospital stay) | Extension: PICAEncounter                 | ae.encounter                                  |
 | care-pathway (based-on)    | A pathway that was defined or recorded for the patient (CarePlan) was followed and documented in the AuditEvents.                                                                                                | We can analyze a specific process                                           | Extension: PICABasedOn                   | ae.basedOn                                    |                                    |
 | actor (agents) | Agents that participated in process steps were identified in specific AuditEvents                                                                                                                                | We can mine the process from multiple perspectives (actors)                 | ae.agent.who                             | ae.agent.who                                  |
+| data (entity) | Additional information (FHIR Resources) which are relevant for the patients pathway                                                                                                                                | In future the data could be used to perform conformance checking with data                | ae.entity.what                             | ae.entity.what                                  |
 
 #### Data Quality
 
 Data quality is the principal requirement for any form of data science, especially conformance checking, as this can only be done with sufficient quality of the process documentation. The PICA profiles and extensions define how logging should occur, via different optional profiles, to achieve specific outcomes in conformance checking. 
 
 The main goal of this implementation guide is to keep the profiles as simple as possible, thus only using one FHIR resource, to keep the effort minimal for organizations which wish to conduct a conformance check. What PICA does **not** do is deal with enriching existing audit logs. This is one of the core reasons why no resources that are referenced in the AuditEvent are considered for loading information for the conformance checking.
+
+Although the current focus is on standard conformance checking, potential future extensions are being considered. To support conformance checking with data, additional relevant FHIR resources (e.g. Observation) can be linked as references within ae.entity. It is important to note that **medical data should not be stored directly in the AuditEvent resource.** The specific use case will depend heavily on the available data and algorithms. Model as: Reference an FHIR resource, and use FHIRPath to the actual value that should be evaluated.
+
 
 The following considerations explain why the selected fields are required for the different process perspectives, and why other fields were not chosen. They may hint how one may enrich an existing audit log for conformance checking, but an enrichment is complex, and where the necessary information may be found in existing systems will vary highly in different software systems, or even across different processes.
 
@@ -142,7 +146,28 @@ Note that the patient can be an actor as well, for example if they filled a ques
 ##### Considerations
 
 - agent.who is the minimal requirement for this implementation guide, and documented in FHIR
-- optinally the agent.type and agent.role could be used to filter towards more specific involvement in the process.
+- optionally the agent.type and agent.role could be used to filter towards more specific involvement in the process.
+
+#### Data perspective
+
+The Data perspective, enables conformane checking with data. It requires the data stored in a FHIR Ressource, which is referenced:
+- **FHIR Resource** with the values to evaluate needed data
+
+
+##### What does the data perspective do?
+
+This perspective is needed to enable conformance checking with data. Data-aware conformance checking is an advanced form of conformance checking that not only compares the sequence of events against a process model but also considers the data attributes associated with those events.
+
+The application for a specific use case strongly depends on the available data and the algorithms applied, especially those that integrate additional information during the transformation process.
+
+
+##### Considerations
+
+- **Medical data should not be stored directly in the AuditEvent.** 
+- ae.entity[x].what should reference the according FHIR Resource (e.g. Observation, Procedure,...) where the information is stored.
+- With FHIRPath the value will be evaluated.
+- Optionally the ae.entity[x].role could be used to filter or define which information should be extracted.
+
 
 #### Further perspectives
 
